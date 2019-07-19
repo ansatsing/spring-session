@@ -98,6 +98,11 @@ final class RedisSessionExpirationPolicy {
         return RedisOperationsSessionRepository.BOUNDED_HASH_KEY_PREFIX + sessionId;
     }
 
+    /**
+     * redis使用的过期键值删除策略是：惰性删除加上定期删除，两者配合使用。
+     *      -惰性删除：客户端访问或者使用时就去判断是否过期，过期则删除
+     *      -定期删除：线程定时扫描并删除
+     */
     public void cleanExpiredSessions() {
         long now = System.currentTimeMillis();
         long prevMin = roundDownMinute(now);
