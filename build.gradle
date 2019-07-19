@@ -26,19 +26,19 @@ ext.milestoneBuild = !(releaseBuild || snapshotBuild)
 apply plugin: 'base'
 
 
-sonarRunner {
-    sonarProperties {
-        property "sonar.java.coveragePlugin", "jacoco"
-        property "sonar.projectName", "Spring Session"
-        property "sonar.jacoco.reportPath", "${buildDir.name}/jacoco.exec"
-        property "sonar.links.homepage", 'https://github.com/spring-projects/spring-session'
-        property "sonar.links.ci", 'https://build.spring.io/browse/SESSION'
-        property "sonar.links.issue", 'https://github.com/spring-projects/spring-session/issues'
-        property "sonar.links.scm", 'https://github.com/spring-projects/spring-session'
-        property "sonar.links.scm_dev", 'https://github.com/spring-projects/spring-session.git'
-        property "sonar.java.coveragePlugin", "jacoco"
-    }
-}
+//sonarRunner {
+//    sonarProperties {
+//        property "sonar.java.coveragePlugin", "jacoco"
+//        property "sonar.projectName", "Spring Session"
+//        property "sonar.jacoco.reportPath", "${buildDir.name}/jacoco.exec"
+//        property "sonar.links.homepage", 'https://github.com/spring-projects/spring-session'
+//        property "sonar.links.ci", 'https://build.spring.io/browse/SESSION'
+//        property "sonar.links.issue", 'https://github.com/spring-projects/spring-session/issues'
+//        property "sonar.links.scm", 'https://github.com/spring-projects/spring-session'
+//        property "sonar.links.scm_dev", 'https://github.com/spring-projects/spring-session.git'
+//        property "sonar.java.coveragePlugin", "jacoco"
+//    }
+//}
 
 task configDocsZip(dependsOn: [':docs:asciidoctor',':spring-session:javadoc']) << {
     project.tasks.docsZip.from(project(':docs').asciidoctor) {
