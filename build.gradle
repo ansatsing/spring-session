@@ -22,7 +22,7 @@ ext.releaseBuild = version.endsWith('RELEASE')
 ext.snapshotBuild = version.endsWith('SNAPSHOT')
 ext.milestoneBuild = !(releaseBuild || snapshotBuild)
 
-apply plugin: 'sonar-runner'
+//apply plugin: 'sonar-runner'
 apply plugin: 'base'
 
 
