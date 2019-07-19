@@ -2,13 +2,13 @@ rootProject.name = 'spring-session-build'
 
 include 'docs'
 
-include 'samples:boot'
+//include 'samples:boot'
 include 'samples:hazelcast'
 include 'samples:httpsession'
 include 'samples:rest'
 include 'samples:security'
 include 'samples:users'
-include 'samples:websocket'
+//include 'samples:websocket'
 
 include 'spring-session'
 include 'spring-session-data-redis'
