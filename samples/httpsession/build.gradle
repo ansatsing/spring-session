@@ -9,7 +9,7 @@ tasks.findByPath("artifactoryPublish")?.enabled = false
 dependencies {
     compile project(':spring-session-data-redis'),
             "org.springframework:spring-web:$springVersion",
-            "redis.embedded:embedded-redis:0.2",
+            "redis.embedded:embedded-redis:0.5",
             jstlDependencies
 
     providedCompile "javax.servlet:javax.servlet-api:$servletApiVersion"
