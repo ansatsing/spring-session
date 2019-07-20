@@ -19,4 +19,4 @@ Spring Session is Open Source software released under the http://www.apache.org/
 
 = 版本说明
 
-纯属为了注释1.0.0.RELEASE版本而创建的分支
+-纯属为了注释1.0.0.RELEASE版本而创建的分支-
