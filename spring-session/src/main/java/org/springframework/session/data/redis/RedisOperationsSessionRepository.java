@@ -211,6 +211,9 @@ public class RedisOperationsSessionRepository implements SessionRepository<Redis
         session.saveDelta();
     }
 
+    /**
+     * 隔一分钟清理一次过期会话
+     */
     @Scheduled(cron="0 * * * * *")
     public void cleanupExpiredSessions() {
         this.expirationPolicy.cleanExpiredSessions();
