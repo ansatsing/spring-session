@@ -85,7 +85,7 @@ task javadocJar(type: Jar) {
 
 artifacts {
     archives sourcesJar
-   // archives javadocJar
+   // archives javadocJar //否则报错：Javadoc generation failed. Generated Javadoc options file (useful for troubleshooting):
 }
 
 test {
