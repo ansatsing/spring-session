@@ -1,3 +1,6 @@
+/**buildscript里的设置是gradle本身所需的
+ * 参考：https://www.cnblogs.com/qiangxia/p/4826532.html
+ * */
 buildscript {
     repositories {
         maven { url "https://repo.spring.io/plugins-release" }
