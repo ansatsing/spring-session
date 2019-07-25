@@ -73,8 +73,14 @@ final class RedisSessionExpirationPolicy {
         expirationRedisOperations.boundSetOps(expireKey).remove(session.getId());
     }
 
+    /**
+     *  保存会话到redis并设置过期时间
+     * @param originalExpirationTime 最近一次会话过期时间
+     * @param session  要更新过期时间的session
+     */
     public void onExpirationUpdated(Long originalExpirationTime, ExpiringSession session) {
         if(originalExpirationTime != null) {
+            //同一个会话id，在会话过期之前又访问了一次，则需要删除上次时间点集合里的sessionid;
             String expireKey = getExpirationKey(originalExpirationTime);
             expirationRedisOperations.boundSetOps(expireKey).remove(session.getId());
         }
