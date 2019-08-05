@@ -108,6 +108,12 @@ public class RedisHttpSessionConfiguration implements ImportAware, BeanClassLoad
         return sessionRepositoryFilter;
     }
 
+    /**
+     * ImportAware接口的方法
+     * 其目的就是获取注解EnableRedisHttpSession里的maxInactiveIntervalInSeconds参数，比如
+     *      @EnableRedisHttpSession(maxInactiveIntervalInSeconds = 130)
+     * @param importMetadata
+     */
     public void setImportMetadata(AnnotationMetadata importMetadata) {
 
         Map<String, Object> enableAttrMap = importMetadata.getAnnotationAttributes(EnableRedisHttpSession.class.getName());
