@@ -12,6 +12,7 @@ import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.DisposableBean;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.config.BeanFactoryPostProcessor;
 import org.springframework.beans.factory.config.ConfigurableListableBeanFactory;
 import org.springframework.beans.factory.support.BeanDefinitionRegistry;
 import org.springframework.beans.factory.support.BeanDefinitionRegistryPostProcessor;
@@ -144,13 +145,13 @@ public class RedisOperationsSessionRepositoryITests<S extends Session> {
         }
 
         /**
-         * 不实现BeanDefinitionRegistryPostProcessor接口程序运行不起来
+         * 不实现BeanDefinitionRegistryPostProcessor或者BeanFactoryPostProcessor接口程序运行不起来
          * Implements BeanDefinitionRegistryPostProcessor to ensure this Bean
          * is initialized before any other Beans. Specifically, we want to ensure
          * that the Redis Server is started before RedisHttpSessionConfiguration
          * attempts to enable Keyspace notifications.
          */
-        static class RedisServerBean implements InitializingBean, DisposableBean/**, BeanDefinitionRegistryPostProcessor **/{
+        static class RedisServerBean implements InitializingBean, DisposableBean, BeanFactoryPostProcessor /**, BeanDefinitionRegistryPostProcessor **/{
             private RedisServer redisServer;
 
 
@@ -163,6 +164,10 @@ public class RedisOperationsSessionRepositoryITests<S extends Session> {
                 if(redisServer != null) {
                     redisServer.stop();
                 }
+            }
+
+            public void postProcessBeanFactory(ConfigurableListableBeanFactory beanFactory) throws BeansException {
+
             }
 
             //public void postProcessBeanDefinitionRegistry(BeanDefinitionRegistry registry) throws BeansException {}
