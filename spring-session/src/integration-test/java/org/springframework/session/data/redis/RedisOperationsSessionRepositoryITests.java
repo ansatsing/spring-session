@@ -129,6 +129,10 @@ public class RedisOperationsSessionRepositoryITests<S extends Session> {
             return factory;
         }
 
+        /**
+         * 启动内置redis服务器
+         * @return
+         */
         @Bean
         public static RedisServerBean redisServer() {
             return new RedisServerBean();
@@ -140,12 +144,13 @@ public class RedisOperationsSessionRepositoryITests<S extends Session> {
         }
 
         /**
+         * 不实现BeanDefinitionRegistryPostProcessor接口程序运行不起来
          * Implements BeanDefinitionRegistryPostProcessor to ensure this Bean
          * is initialized before any other Beans. Specifically, we want to ensure
          * that the Redis Server is started before RedisHttpSessionConfiguration
          * attempts to enable Keyspace notifications.
          */
-        static class RedisServerBean implements InitializingBean, DisposableBean, BeanDefinitionRegistryPostProcessor {
+        static class RedisServerBean implements InitializingBean, DisposableBean/**, BeanDefinitionRegistryPostProcessor **/{
             private RedisServer redisServer;
 
 
@@ -160,9 +165,9 @@ public class RedisOperationsSessionRepositoryITests<S extends Session> {
                 }
             }
 
-            public void postProcessBeanDefinitionRegistry(BeanDefinitionRegistry registry) throws BeansException {}
+            //public void postProcessBeanDefinitionRegistry(BeanDefinitionRegistry registry) throws BeansException {}
 
-            public void postProcessBeanFactory(ConfigurableListableBeanFactory beanFactory) throws BeansException {}
+            //public void postProcessBeanFactory(ConfigurableListableBeanFactory beanFactory) throws BeansException {}
         }
     }
 
